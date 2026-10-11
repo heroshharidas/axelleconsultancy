@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ==========================================================================
+         LEARNING CONTEXT: META TAGS & HEAD SECTION
+         The <head> contains machine-readable information (metadata) about the page:
+         - charset="UTF-8": Specifies universal character encoding (supports all symbols & emojis).
+         - viewport: Crucial for responsive web design. Tells mobile devices to match screen width.
+         - title & description: Shown in Google search results and browser tabs (essential for SEO).
+         ========================================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Axelle Consulting - AI-enabled Health Economics & Outcomes Research (HEOR) modelling and intelligent automation.">
+    <meta name="keywords" content="HEOR, Health Economics, AI, Pharmaceutical Analytics, Axelle Consulting">
+    <meta name="author" content="Axelle Consulting">
+
+    <title>Axelle Consulting | HEOR.AI - Scalable Economic Models</title>
+
+    <!-- Google Fonts: Modern sans-serif typography for readability and clean aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheet: Keeps presentation separate from content structure -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         NAVIGATION BAR
+         LEARNING CONTEXT:
+         Semantic <nav> helps search engines and assistive technology identify site navigation.
+         Includes a logo, desktop menu links, and a mobile hamburger menu button.
+         ========================================================================== -->
+    <header class="site-header" id="top">
+        <div class="container nav-container">
+            <a href="#top" class="logo" aria-label="Axelle Consulting Home">
+                <span class="logo-text">Axelle<span class="logo-accent">.</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#collaboration" class="nav-link">Solutions</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#consultation-modal" class="nav-btn modal-trigger">Get Consultation</a>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle Button -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==========================================================================
+             HERO SECTION (From Image 1: HEOR.AI)
+             LEARNING CONTEXT:
+             The "Hero" is the first section visitors see above the fold.
+             It features a high-impact headline, brand identity, and a primary Call to Action (CTA).
+             ========================================================================== -->
+        <section class="hero-section" id="hero">
+            <!-- Background overlay with high-tech digital particle grid styling -->
+            <div class="hero-background">
+                <img src="images/hero-bg.png" alt="HEOR.AI Background Pattern" class="hero-bg-img">
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <p class="hero-tagline">Scalable Economic Models. Smarter Evidence. Faster Access.</p>
+                    <h1 class="hero-title">HEOR.AI</h1>
+                    <div class="hero-cta-wrapper">
+                        <a href="#contact" class="btn btn-outline modal-trigger">GET A FREE CONSULTATION</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================================================
+             SECTION 1: ABOUT AXELLE CONSULTING (From Image 2)
+             LEARNING CONTEXT:
+             Uses a 2-column layout (CSS Flexbox/Grid):
+             - Left: Circular profile/team imagery representing collaboration.
+             - Right: Value proposition and mission statement.
+             ========================================================================== -->
+        <section class="section about-section" id="about">
+            <div class="container">
+                <!-- Centered Section Heading -->
+                <div class="section-header">
+                    <h2 class="section-title">About Axelle Consulting</h2>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Left Column: Circular Image -->
+                    <div class="about-image-wrapper">
+                        <div class="circle-image-container">
+                            <img src="images/about-team.png" alt="Axelle Consulting Team Handshake" class="circle-image" loading="lazy">
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Text Information -->
+                    <div class="about-text-content">
+                        <h3 class="feature-headline">Smarter Models. Better Evidence.</h3>
+                        <p class="feature-paragraph">
+                            Axelle Consulting transforms HEOR through AI-enabled health economic modelling and intelligent automation.
+                            We develop scalable, therapeutic area agnostic economic models that accelerate evidence generation, streamline HEOR workflows.
+                        </p>
+                        <div class="feature-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">✦</span>
+                                <span>AI-Enabled Health Economic Modelling</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">✦</span>
+                                <span>Intelligent Automation & Scalable Architecture</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-bullet">✦</span>
+                                <span>Therapeutic Area Agnostic Frameworks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================================================
+             SECTION 2: COLLABORATION & FUTURE OF HEOR (From Image 3)
+             LEARNING CONTEXT:
+             Reverses visual flow (Image on the left, Text on the right) for visual balance.
+             Includes a subtle intro eyebrow text ("Hello") and an action link ("FIND OUT MORE").
+             ========================================================================== -->
+        <section class="section collaboration-section" id="collaboration">
+            <div class="container">
+                <div class="collaboration-grid">
+                    <!-- Left Column: Rectangular photo -->
+                    <div class="collaboration-image-wrapper">
+                        <div class="rounded-image-container">
+                            <img src="images/collaboration.png" alt="Collaborative review of health economic documents" class="rounded-image" loading="lazy">
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Narrative & Action Link -->
+                    <div class="collaboration-text-content">
+                        <span class="eyebrow-text">Hello</span>
+                        <h3 class="feature-headline">Let's Build the Future of HEOR Together</h3>
+                        <p class="feature-paragraph">
+                            Have a project in mind or exploring new possibilities in HEOR, health economic modelling, or AI driven analytics?
+                            We'd be delighted to discuss your goals and explore how Axelle Consulting can support your organization.
+                        </p>
+                        <div class="action-link-wrapper">
+                            <a href="#contact" class="underlined-link">FIND OUT MORE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================================================
+             SECTION 3: CONTACT US (From Image 4)
+             LEARNING CONTEXT:
+             Essential for business conversion. Includes:
+             - Centered title "Contact Us"
+             - Left: Direct company communication details and email link
+             - Right: Professional meeting photo
+             - Bonus: Interactive contact form that works seamlessly
+             ========================================================================== -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contact Us</h2>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Left Column: Contact details & inquiry form -->
+                    <div class="contact-details">
+                        <h3 class="contact-headline">Better yet, see us in person!</h3>
+                        <p class="contact-subtext">We love our customers, so feel free to write to us.</p>
+
+                        <div class="company-card">
+                            <h4 class="company-name">Axelle Consulting</h4>
+                            <a href="mailto:axelleconsulting@outlook.com" class="company-email">
+                                <span class="email-icon">✉</span> axelleconsulting@outlook.com
+                            </a>
+                        </div>
+
+                        <!-- Interactive Contact Form -->
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="userName">Your Name</label>
+                                <input type="text" id="userName" name="name" placeholder="Dr. Jane Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userEmail">Email Address</label>
+                                <input type="email" id="userEmail" name="email" placeholder="jane.doe@organization.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userMessage">Message / Project Goals</label>
+                                <textarea id="userMessage" name="message" rows="4" placeholder="Tell us about your HEOR modelling or evidence generation needs..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+                        </form>
+                    </div>
+
+                    <!-- Right Column: Professional Meeting Image -->
+                    <div class="contact-image-wrapper">
+                        <div class="rounded-image-container">
+                            <img src="images/contact-team.png" alt="Axelle Consulting professional meeting with client" class="rounded-image" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER SECTION
+         LEARNING CONTEXT:
+         The <footer> anchors the webpage with copyright information,
+         back-to-top navigation, and secondary links.
+         ========================================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <p>&copy; <span id="currentYear"></span> Axelle Consulting. All rights reserved.</p>
+                <p class="footer-tagline">AI-Powered Health Economics & Outcomes Research</p>
+            </div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#collaboration">Solutions</a>
+                <a href="#contact">Contact</a>
+                <a href="#top" class="back-to-top" aria-label="Back to top">↑ Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         MODAL: FREE CONSULTATION POPUP
+         LEARNING CONTEXT:
+         Modals provide focused user interaction without navigating away from the page.
+         Closed by clicking the 'x' button, clicking the backdrop, or pressing Escape key.
+         ========================================================================== -->
+    <div class="modal-backdrop" id="consultationModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+        <div class="modal-dialog">
+            <button class="modal-close" id="modalClose" aria-label="Close dialog">&times;</button>
+            <h3 id="modalTitle" class="modal-title">Schedule a Free Consultation</h3>
+            <p class="modal-desc">Discuss your HEOR modeling objectives and evidence generation roadmap with our specialists.</p>
+            
+            <form class="modal-form" id="consultationForm">
+                <div class="form-group">
+                    <label for="modalName">Full Name</label>
+                    <input type="text" id="modalName" required placeholder="Your Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="modalEmail">Work Email</label>
+                    <input type="email" id="modalEmail" required placeholder="your.name@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="modalOrg">Organization / Company</label>
+                    <input type="text" id="modalOrg" placeholder="Pharmaceutical / Biotech / Research Org">
+                </div>
+                <div class="form-group">
+                    <label for="modalNotes">Project Scope</label>
+                    <textarea id="modalNotes" rows="3" placeholder="Brief overview of therapeutic area or modelling objectives..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Request Consultation</button>
+                <p class="modal-feedback" id="modalFeedback" role="status"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- External JavaScript: Interactive logic, animations, and form validation -->
+    <script src="script.js"></script>
+</body>
+</html>

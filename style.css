@@ -1,0 +1,795 @@
+/* ==========================================================================
+   AXELLE CONSULTING & HEOR.AI - STYLESHEET
+   
+   LEARNING CONTEXT FOR BEGINNERS:
+   1. CSS Variables (--variable-name): Centrally define colors, fonts, and sizing.
+      Changing a variable here updates it across the entire website automatically!
+   2. Box-Sizing (border-box): Ensures padding and borders don't increase element width.
+   3. CSS Grid & Flexbox: Modern layout standards for responsive 1D and 2D alignment.
+   4. Media Queries (@media): Adapt layout automatically for tablets and mobile screens.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS (CSS VARIABLES)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Color Palette */
+    --color-dark-bg: #07061d;          /* Deep navy/purple matching hero section */
+    --color-dark-surface: #0f0d35;     /* Slightly lighter navy for cards/borders */
+    --color-accent: #4f46e5;           /* Tech purple/indigo */
+    --color-accent-hover: #6366f1;     /* Glow state on hover */
+    --color-accent-cyan: #38bdf8;      /* Data point cyan accent */
+    
+    --color-bg-light: #ffffff;         /* Pure white background for content sections */
+    --color-bg-alt: #f8fafc;           /* Subtle off-white for visual rhythm */
+    
+    --color-text-main: #1e293b;        /* Charcoal for body copy (better contrast than black) */
+    --color-text-heading: #0f172a;     /* Deep slate for titles and headers */
+    --color-text-muted: #64748b;       /* Slate gray for secondary text */
+    --color-text-light: #f8fafc;       /* Crisp light text for dark backgrounds */
+    
+    --color-border: #e2e8f0;          /* Subtle divider border */
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* Layout Spacing */
+    --container-max-width: 1140px;
+    --section-spacing: 90px;
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    
+    /* Shadows & Transitions */
+    --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.06);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. CSS RESET & GLOBAL BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling when clicking anchor links */
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-main);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+/* Reusable layout container */
+.container {
+    width: 90%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. HEADER & NAVIGATION
+   -------------------------------------------------------------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(7, 6, 29, 0.85);
+    backdrop-filter: blur(12px); /* Glassmorphism frosted glass effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background var(--transition-medium);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+    letter-spacing: -0.5px;
+}
+
+.logo-accent {
+    color: var(--color-accent-cyan);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-link {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    padding: 6px 0;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--color-accent-cyan);
+    transition: width var(--transition-medium);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-btn {
+    padding: 8px 18px;
+    border-radius: var(--border-radius-sm);
+    background: var(--color-accent);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-btn:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+}
+
+/* Mobile Hamburger Toggle */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.mobile-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 5px 0;
+    background: #ffffff;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO SECTION (HEOR.AI)
+   -------------------------------------------------------------------------- */
+.hero-section {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-dark-bg);
+    overflow: hidden;
+    padding-top: 80px; /* Accounts for fixed navbar */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(7, 6, 29, 0.92) 0%, rgba(7, 6, 29, 0.65) 50%, rgba(7, 6, 29, 0.4) 100%);
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 600px;
+    padding: 40px 0;
+}
+
+.hero-tagline {
+    font-size: 1.15rem;
+    color: #e2e8f0;
+    font-weight: 400;
+    margin-bottom: 24px;
+    letter-spacing: 0.2px;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1px;
+    line-height: 1.05;
+    margin-bottom: 36px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-cta-wrapper {
+    display: flex;
+    gap: 16px;
+}
+
+/* Button Component */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    text-align: center;
+    transition: all var(--transition-fast);
+    border: none;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+}
+
+.btn-outline:hover {
+    background: #ffffff;
+    color: var(--color-dark-bg);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--color-accent);
+    color: #ffffff;
+    border: 1.5px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   5. GENERAL SECTION STYLING & HEADINGS
+   -------------------------------------------------------------------------- */
+.section {
+    padding: var(--section-spacing) 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    letter-spacing: -0.3px;
+    position: relative;
+    display: inline-block;
+}
+
+.feature-headline {
+    font-size: 1.85rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    letter-spacing: -0.4px;
+}
+
+.feature-paragraph {
+    font-size: 1.05rem;
+    color: #475569;
+    line-height: 1.75;
+    margin-bottom: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   6. ABOUT SECTION (From Image 2)
+   -------------------------------------------------------------------------- */
+.about-section {
+    background-color: var(--color-bg-light);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Circular Profile Mask */
+.circle-image-container {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    border: 4px solid #ffffff;
+    transition: transform var(--transition-medium);
+}
+
+.circle-image-container:hover {
+    transform: scale(1.02);
+}
+
+.circle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%); /* Preserves the artistic black-and-white tone */
+    transition: filter var(--transition-medium);
+}
+
+.circle-image-container:hover .circle-image {
+    filter: grayscale(40%); /* Subtle warmth on hover */
+}
+
+.feature-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+
+.highlight-bullet {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. COLLABORATION SECTION (From Image 3)
+   -------------------------------------------------------------------------- */
+.collaboration-section {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.collaboration-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.rounded-image-container {
+    width: 100%;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-medium);
+}
+
+.rounded-image-container:hover {
+    transform: translateY(-4px);
+}
+
+.rounded-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter var(--transition-medium);
+}
+
+.rounded-image-container:hover .rounded-image {
+    filter: grayscale(30%);
+}
+
+.eyebrow-text {
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.action-link-wrapper {
+    margin-top: 28px;
+}
+
+.underlined-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--color-text-heading);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1.5px;
+    transition: color var(--transition-fast), text-underline-offset var(--transition-fast);
+}
+
+.underlined-link:hover {
+    color: var(--color-accent);
+    text-underline-offset: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   8. CONTACT US SECTION (From Image 4)
+   -------------------------------------------------------------------------- */
+.contact-section {
+    background-color: var(--color-bg-light);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.contact-headline {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    margin-bottom: 8px;
+}
+
+.contact-subtext {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+}
+
+.company-card {
+    padding: 20px;
+    background: var(--color-bg-alt);
+    border-radius: var(--border-radius-sm);
+    border-left: 4px solid var(--color-accent);
+    margin-bottom: 30px;
+}
+
+.company-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 6px;
+}
+
+.company-email {
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.company-email:hover {
+    text-decoration: underline;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    background-color: #ffffff;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.form-feedback {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.form-feedback.success {
+    color: #16a34a;
+}
+
+.form-feedback.error {
+    color: #dc2626;
+}
+
+/* --------------------------------------------------------------------------
+   9. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background-color: var(--color-dark-bg);
+    color: #94a3b8;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.footer-tagline {
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.back-to-top {
+    color: var(--color-accent-cyan) !important;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   10. CONSULTATION MODAL
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-backdrop.is-active {
+    display: flex;
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-dialog {
+    background: #ffffff;
+    border-radius: var(--border-radius-md);
+    width: 100%;
+    max-width: 520px;
+    padding: 32px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--color-text-heading);
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 8px;
+}
+
+.modal-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-feedback {
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.modal-feedback.success {
+    color: #16a34a;
+}
+
+/* --------------------------------------------------------------------------
+   11. RESPONSIVE DESIGN (MEDIA QUERIES)
+   LEARNING CONTEXT:
+   Media queries adjust styles according to the viewport width.
+   Here we transform 2-column layouts into single columns for smartphones/tablets.
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .about-grid,
+    .collaboration-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* Keep natural reading flow on mobile */
+    .collaboration-grid .collaboration-image-wrapper {
+        order: -1;
+    }
+
+    .circle-image-container {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-spacing: 60px;
+    }
+
+    /* Mobile Navigation Drawer */
+    .mobile-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: rgba(7, 6, 29, 0.97);
+        flex-direction: column;
+        padding: 24px 0;
+        gap: 20px;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links.is-open {
+        transform: translateY(0);
+    }
+
+    .hero-content {
+        text-align: left;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}
